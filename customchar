@@ -1,0 +1,70 @@
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Nik0's Gui", "Sentinel")
+-- MAIN
+local Tab = Window:NewTab("Customise")
+local Section = Tab:NewSection("Customise your character")
+
+Section:NewButton("Blocky Accessories", "Block accessories", function(state)
+        for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+            if v:IsA("Accessory") then
+                if v.Handle:FindFirstChild("SpecialMesh") then
+                    v.Handle.SpecialMesh:Destroy()
+                elseif v.Handle:FindFirstChild("Mesh") then
+                    v.Handle.Mesh:Destroy()
+                end
+            end
+        end
+end)
+Section:NewButton("Get rid of accessories","Gets rid of any accessory",function()
+    for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+            if v:IsA("Accessory") then
+                if v.Handle:FindFirstChild("AccessoryWeld") then
+                    v.Handle.AccessoryWeld:Destroy()
+                end
+            end
+        end
+end)
+
+Section:NewButton("Get rid of face","Gets rid of your face",function()
+    game.Players.LocalPlayer.Character.Head.face:Destroy()
+end)
+Section:NewSlider("WalkSpeed","...",100,16,function(speed)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = speed
+end)
+Section:NewSlider("JumpHeight","...",50,7.2,function(speed)
+    game.Players.LocalPlayer.Character.Humanoid.JumpHeight = speed
+end)
+Section:NewButton("Reset JumpHeight & WalkSpeed","Resets your changes",function()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+    game.Players.LocalPlayer.Character.Humanoid.JumpHeight = 7.2
+end)
+Section:NewButton("Become invisible","Makes every single of your body invisible.",function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/NikaflexzRoblox/Ivisiblescriptroblox2/main/Invisiblescript"))()
+end)
+Section:NewButton("No legs","Removes your legs",function()
+    local leftleg = game.Players.LocalPlayer.Character:FindFirstChild("LeftUpperLeg")
+    local rightleg = game.Players.LocalPlayer.Character:FindFirstChild("RightUpperLeg")
+    if leftleg and rightleg then
+        leftleg:Destroy()
+        rightleg:Destroy()
+    else
+        local leftleg = game.Players.LocalPlayer.Character:FindFirstChild("Left Leg")
+        local rightleg = game.Players.LocalPlayer.Character:FindFirstChild("Right Leg")
+        leftleg:Destroy()
+        rightleg:Destroy()
+    end
+end)
+Section:NewButton("No arms","Removes your arms",function()
+    local leftarm = game.Players.LocalPlayer.Character:FindFirstChild("LeftUpperArm")
+    local rightarm = game.Players.LocalPlayer.Character:FindFirstChild("RightUpperArm")
+    if leftarm and rightarm then
+        leftarm:Destroy()
+        rightarm:Destroy()
+    else
+        local leftarm = game.Players.LocalPlayer.Character:FindFirstChild("Left Arm")
+        local rightarm = game.Players.LocalPlayer.Character:FindFirstChild("Right Arm")
+        leftarm:Destroy()
+        rightarm:Destroy()
+    end
+end)
